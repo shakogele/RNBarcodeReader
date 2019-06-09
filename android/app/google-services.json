@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "682472917788",
+    "firebase_url": "https://liftapp-faef0.firebaseio.com",
+    "project_id": "liftapp-faef0",
+    "storage_bucket": "liftapp-faef0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682472917788:android:eac72e14c249cd8c",
+        "android_client_info": {
+          "package_name": "com.liftapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682472917788-kedr62mn0r8r4l3418g0m2fmvj7b0p2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6cb6wmo6qDjduIeP0Hng778Tp2Z6sjwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682472917788-kedr62mn0r8r4l3418g0m2fmvj7b0p2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
