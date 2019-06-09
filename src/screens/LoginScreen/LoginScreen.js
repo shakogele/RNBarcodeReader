@@ -44,7 +44,7 @@ class LoginScreen extends Component{
   static getDerivedStateFromProps(props, state){
     if(props.token && props.expiresIn){
       if(props.expiresIn > new Date().getTime()){
-        gotoScreen(props.componentId, 'liftApp.BarCodeScannerScreen');
+        gotoScreen(props.componentId, 'liftApp.ProfileScreen');
       }
     }
     return null;
@@ -69,7 +69,7 @@ class LoginScreen extends Component{
       email: this.state.controls.email.value,
       password: this.state.controls.password.value
     };
-    this.props.onTryAuth(authData, 'signin')
+    this.props.onTryAuth(authData, 'signin', this.props.componentId)
   }
 
   updateInputState = (key, value) => {
@@ -142,6 +142,7 @@ class LoginScreen extends Component{
                 onChangeText={val => this.updateInputState("password", val)}
                 valid={this.state.controls.password.valid}
                 touched={this.state.controls.password.touched}
+                autoCapitalize="none"
                 secureTextEntry
               />
             {loginButton}
@@ -164,7 +165,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTryAuth: (authData, authMode) => dispatch(tryAuth(authData, authMode)),
+    onTryAuth: (authData, authMode, componentId) => dispatch(tryAuth(authData, authMode, componentId)),
     onAutoSignIn: () => dispatch(authAutoSignIn())
   };
 };

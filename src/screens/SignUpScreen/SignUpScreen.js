@@ -58,17 +58,29 @@ class SignUpScreen extends Component{
   };
 
   onClickRegister = () => {
-    for(let ctrl in this.state.controls){
-      if(!this.state.controls[ctrl].valid){
-        alert("Please Fill in All Required Fields")
-        return false;
+
+    let inputIsValid = true;
+    let inputControls = {...this.state.controls};
+
+    for(let ctrl in inputControls){
+      if(!inputControls[ctrl].valid){
+        inputControls[ctrl].touched = true;
+        inputIsValid=false;
       }
+    }
+
+    if(!inputIsValid){
+      this.setState({
+        controls: inputControls
+      });
+      alert("Please Fill in All Required Fields");
+      return false;
     }
     const authData = {
       email: this.state.controls.email.value,
       password: this.state.controls.password.value
     };
-    this.props.onTryAuth(authData, 'signup')
+    this.props.onTryAuth(authData, 'signup', this.props.componentId);
   };
 
   updateInputState = (key, value) => {
@@ -170,6 +182,7 @@ class SignUpScreen extends Component{
                     onChangeText={val => this.updateInputState("password", val)}
                     valid={this.state.controls.password.valid}
                     touched={this.state.controls.password.touched}
+                    autoCapitalize="none"
                     secureTextEntry
                   />
                 <DefaultInput
@@ -179,6 +192,7 @@ class SignUpScreen extends Component{
                     onChangeText={val => this.updateInputState("confirmPassword", val)}
                     valid={this.state.controls.confirmPassword.valid}
                     touched={this.state.controls.confirmPassword.touched}
+                    autoCapitalize="none"
                     secureTextEntry
                   />
                 {registerButton}
@@ -201,7 +215,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTryAuth: (authData, authMode) => dispatch(tryAuth(authData, authMode)),
+    onTryAuth: (authData, authMode, componentId) => dispatch(tryAuth(authData, authMode, componentId)),
     onAutoSignIn: () => dispatch(authAutoSignIn())
   };
 };

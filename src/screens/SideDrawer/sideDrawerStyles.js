@@ -3,7 +3,7 @@ import { scale, moderateScale, verticalScale} from '../../utility/scaling';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#f0f0f1",
+    backgroundColor: "#fff",
     flex: 1,
     width: Dimensions.get("window").width * 0.8
   },
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   sideMenuTopBar:{
     height: scale(80),
-    backgroundColor: '#f0f0f1',
+    backgroundColor: '#fff',
     justifyContent: 'space-between',
     display: 'flex',
     flexDirection: 'row',
@@ -27,9 +27,16 @@ const styles = StyleSheet.create({
   },
   logoView: {
     textAlign: 'left',
+    flexDirection: "row",
     justifyContent: 'flex-end',
+    alignItems: "center",
     padding: scale(10),
     paddingLeft: scale(20)
+  },
+  sideBarHeader: {
+    fontSize: scale(18),
+    fontWeight: "bold",
+    color: "teal"
   },
   hamburgerButtonView: {
     textAlign: 'right',
@@ -38,15 +45,15 @@ const styles = StyleSheet.create({
     paddingBottom: scale(20)
   },
   logoImage: {
-    width: scale(200),
-    height: scale(45),
+    width: scale(60),
+    height: scale(60),
   },
   drawerItemMultiple: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f0f0f1",
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: '#fba339',
+    borderColor: 'teal',
     justifyContent: 'flex-start',
     alignItems: 'flex-start'
   },
@@ -55,14 +62,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#f0f0f1",
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#fba339',
+    borderColor: 'teal',
     justifyContent: 'flex-start',
     alignItems: 'flex-start'
   },
   iconsView: {
     width: scale(60),
     height: scale(60),
-    backgroundColor:'#b9bbbe',
+    backgroundColor:'teal',
     justifyContent: 'center',
     alignItems: 'center'
   },

@@ -51,7 +51,7 @@ export default () => Navigation.events().registerAppLaunchedListener(() => {
             children: [
               {
                 component: {
-                  name: 'liftApp.ProfileScreen'
+                  name: 'liftApp.WelcomeScreen'
                 }
               }
             ]

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { connect } from "react-redux";
 
 import styles from './profileScreenStyles';
@@ -14,11 +14,15 @@ class ProfileScreen extends Component{
 
   constructor(props){
     super(props);
-  }
+  };
 
   static options(){
     return profileScreenOptions;
-  }
+  };
+
+  updateUserProfileDate(){
+
+  };
 
   render(){
     const leftMenuIconButton = <ClickableElement
@@ -36,6 +40,9 @@ class ProfileScreen extends Component{
                                   }
                                   onPress={() => gotoScreen(this.props.componentId, 'back')}
                                 />;
+    const myBarCodes = this.props.barcodes && this.props.barcodes.map(code => {
+      return <Text key={code} style={styles.barcodeItem}>{code}</Text>
+    });
     return(
       <View style={styles.background}>
         <CustomHeader
@@ -43,6 +50,36 @@ class ProfileScreen extends Component{
             topBorder={false}
             centerBlock={<Text style={styles.centerBlock}>User ProfileScreen</Text>}
             leftBlock={ leftMenuIconButton } />
+        <View style={styles.mainContainer}>
+          <View style={styles.block}>
+            <Text style={ styles.blockHeader }>My BarCodes</Text>
+            <ScrollView style={styles.scrollView}>
+              {myBarCodes}
+            </ScrollView>
+            <ClickableElement
+              inner={
+                <View style={styles.mainButton}>
+                  <Text style={styles.mainButtonText}>Add BarCode</Text>
+                </View>
+              }
+              onPress={() => gotoScreen(this.props.componentId, 'liftApp.BarCodeScannerScreen')}
+            />
+          </View>
+          <View style={styles.block}>
+            <Text style={ styles.blockHeader }>My Profile Data</Text>
+            <ScrollView style={styles.scrollView}>
+
+            </ScrollView>
+            <ClickableElement
+              inner={
+                <View style={styles.mainButton}>
+                  <Text style={styles.mainButtonText}>Update</Text>
+                </View>
+              }
+              onPress={this.updateUserProfileDate}
+            />
+          </View>
+        </View>
       </View>
     )
   }
@@ -52,7 +89,7 @@ const mapStateToProps = state => {
   return {
     isLoading: state.ui.isLoading,
     token: state.auth.token,
-    barcode: state.auth.barcode
+    barcodes: state.auth.userData && state.auth.userData.barcodes
   };
 };
 

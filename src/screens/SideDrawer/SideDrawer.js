@@ -11,6 +11,7 @@ import { sideDrawerScreenOptions } from './sideDrawerScreenOptions';
 
 import { connect } from "react-redux";
 import { authLogout } from "../../store/actions/index";
+import lift from '../../assets/images/lift.png';
 
 class SideDrawer extends Component {
 
@@ -88,11 +89,11 @@ class SideDrawer extends Component {
                                       <View style={styles.closeMenuIconContainer}>
                                         <DsproIcons
                                             icon="clear"
-                                            width={15}
-                                            height={15}
-                                            color="#f8a11b"
-                                            strokeColor="#f8a11b"
-                                            fillColor="#f8a11b"
+                                            width={20}
+                                            height={20}
+                                            color="teal"
+                                            strokeColor="teal"
+                                            fillColor="teal"
                                             strokeWidth={0.5} />
                                       </View>
                                     )}
@@ -103,6 +104,8 @@ class SideDrawer extends Component {
         style={styles.container}>
         <View style={styles.sideMenuTopBar}>
           <View style={styles.logoView}>
+            <Image source={lift} style={styles.logoImage} />
+            <Text style={styles.sideBarHeader}>Side Bar</Text>
           </View>
           <View style={styles.hamburgerButtonView}>
             {closeMenuIconButton}

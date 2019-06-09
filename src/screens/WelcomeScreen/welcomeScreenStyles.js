@@ -7,13 +7,25 @@ const styles = StyleSheet.create({
   buttonContainer: {
     padding: scale(12)
   },
+  logoView: {
+    textAlign: 'left',
+    justifyContent: 'center',
+    alignItems: "center",
+    width: "100%",
+    padding: scale(10),
+    paddingLeft: scale(20)
+  },
+  logoImage: {
+    width: scale(100),
+    height: scale(100),
+  },
   mainContainer: {
     height: Dimensions.get('window').height - 60,
-    justifyContent: "center"
   },
   welcomeText: {
     fontSize: scale(20),
     color: "teal",
+    textAlign: "center",
     width: "70%",
     marginLeft: "15%",
     paddingVertical: scale(30)

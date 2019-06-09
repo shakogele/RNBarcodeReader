@@ -30,7 +30,6 @@ class BarCodeScannerScreen extends Component{
     };
     this.camera = null;
     this.barcode = "";
-
   };
 
   static options(){
@@ -42,14 +41,9 @@ class BarCodeScannerScreen extends Component{
   };
 
   onBarCodeRead(scanResult) {
-
-    console.warn(scanResult.type);
-    console.warn(scanResult.data);
     if (scanResult.data != null) {
   	  this.barcode = scanResult.data;
       this.setModalVisible(true);
-      console.log("this.barcodes ",this.barcode);
-  	  console.warn('onBarCodeRead call');
     }
     return;
   }
@@ -76,7 +70,7 @@ class BarCodeScannerScreen extends Component{
                                           strokeWidth={0.5} />
                                     </View>
                                   }
-                                  onPress={() => gotoScreen(this.props.componentId, 'liftApp.WelcomeScreen')}
+                                  onPress={() => gotoScreen(this.props.componentId, 'back')}
                                 />;
     return (
       <View style={styles.container}>
@@ -156,6 +150,7 @@ class BarCodeScannerScreen extends Component{
 }
 
 const mapStateToProps = state => {
+  console.log("Redux State", state);
   return {
     isLoading: state.ui.isLoading,
     token: state.auth.token,

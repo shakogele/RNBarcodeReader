@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView, Image } from 'react-native';
 
 import styles from './welcomeScreenStyles';
 import { welcomeScreenOptions } from './welcomeScreenOptions';
@@ -8,6 +8,8 @@ import CustomHeader from '../../components/UI/CustomHeader/CustomHeader';
 import ClickableElement from '../../components/UI/ClickableElement/ClickableElement';
 import DsproIcons from '../../components/UI/DsproIcons/DsproIcons';
 import gotoScreen from '../../components/UI/GotoScreen/gotoScreen';
+
+import lift from '../../assets/images/lift.png';
 
 class WelcomeScreen extends Component{
 
@@ -41,7 +43,10 @@ class WelcomeScreen extends Component{
             background="teal"
             topBorder={false}
             leftBlock={ leftMenuIconButton } />
-        <View style={styles.mainContainer}>
+        <ScrollView style={styles.mainContainer} contentContainerStyle={{ justifyContent: "center" }}>
+          <View style={styles.logoView}>
+            <Image source={lift} style={styles.logoImage} />
+          </View>
           <Text style={styles.welcomeText}>Welcome to LiftApp</Text>
           <View style={styles.buttonsContainer}>
             <ClickableElement
@@ -61,7 +66,7 @@ class WelcomeScreen extends Component{
               onPress={() => gotoScreen(this.props.componentId, 'liftApp.SignUpScreen')}
             />
           </View>
-        </View>
+        </ScrollView>
       </View>
     )
   }

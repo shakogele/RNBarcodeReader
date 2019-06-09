@@ -1,9 +1,10 @@
 import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN,
-  AUTH_SET_BARCODE } from "../actions/actionTypes";
+  AUTH_SET_BARCODE, AUTH_SET_USERDATA } from "../actions/actionTypes";
 
 const initialState = {
   token: null,
   expiryDate: null,
+  userData: null,
   barcode: null,
 };
 
@@ -19,6 +20,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         barcode: action.barcode,
+      };
+    case AUTH_SET_USERDATA:
+      return {
+        ...state,
+        userData: action.userData,
       };
     case AUTH_REMOVE_TOKEN:
       return {
